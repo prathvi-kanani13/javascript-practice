@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<p id="demo"></p>
+<p id="demo1"></p>
+    <script>
+
+        function multi(){
+            let x=parseInt( document.getElementById('a').value);
+            let y=parseInt( document.getElementById('b').value);
+
+            let mul=x*y;
+            document.getElementById("demo").innerHTML=mul;
+        }
+
+        function division(){
+            let x=parseInt( document.getElementById('a').value);
+            let y=parseInt( document.getElementById('b').value);
+
+            let div=x/y;
+            document.getElementById("demo1").innerHTML=div;
+        }
+    </script>
+    
+
+
+    <div class="main">
+        <label>mark1:</label>
+        <input type="number" id="a"><br>
+
+        <label>mark2:</label>
+        <input type="number" id="b"><br>
+
+        <button onclick="multi()">mul</button>
+        <button onclick="division()">div</button>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Marksheet Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: teal;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #006d6d;
+    }
+
+    #resultBox {
+      margin-top: 15px;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Marksheet Calculator</h2>
+    <form>
+      <label>Computer:</label>
+      <input id="a" type="number" min="0" max="100" required>
+
+      <label>Hindi:</label>
+      <input id="b" type="number" min="0" max="100" required>
+
+      <label>Gujarati:</label>
+      <input id="c" type="number" min="0" max="100" required>
+
+      <label>Science:</label>
+      <input id="d" type="number" min="0" max="100" required>
+
+      <label>Maths:</label>
+      <input id="e" type="number" min="0" max="100" required>
+
+      <button onclick="calculate(event)">Calculate Total</button>
+      <button onclick="calculatePercentage(event)">Show Percentage & Grade</button>
+      <button type="button" onclick="resetForm()">Reset</button>
+
+      <div id="resultBox"></div>
+    </form>
+  </div>
+
+  <script>
+    function validateInputs(...marks) {
+      return marks.every(mark => !isNaN(mark) && mark >= 0 && mark <= 100);
+    }
+
+    function getGrade(per) {
+      if (per >= 90) return "A+ (Excellent)";
+      if (per >= 75) return "A (Very Good)";
+      if (per >= 60) return "B (Good)";
+      if (per >= 45) return "C (Average)";
+      if (per >= 33) return "D (Pass)";
+      return "F (Fail)";
+    }
+
+    function calculate(event) {
+      event.preventDefault();
+
+      let x = parseInt(document.getElementById('a').value);
+      let y = parseInt(document.getElementById('b').value);
+      let z = parseInt(document.getElementById('c').value);
+      let w = parseInt(document.getElementById('d').value);
+      let q = parseInt(document.getElementById('e').value);
+
+      if (!validateInputs(x, y, z, w, q)) {
+        showResult("Please enter valid marks (0-100) in all fields.", "red");
+        return;
+      }
+
+      let sum = x + y + z + w + q;
+      showResult("Total Marks: " + sum, "black");
+    }
+
+    function calculatePercentage(event) {
+      event.preventDefault();
+
+      let x = parseInt(document.getElementById('a').value);
+      let y = parseInt(document.getElementById('b').value);
+      let z = parseInt(document.getElementById('c').value);
+      let w = parseInt(document.getElementById('d').value);
+      let q = parseInt(document.getElementById('e').value);
+
+      if (!validateInputs(x, y, z, w, q)) {
+        showResult("Please enter valid marks (0-100) in all fields.", "red");
+        return;
+      }
+
+      let sum = x + y + z + w + q;
+      let per = sum / 5;
+      let grade = getGrade(per);
+
+      let color = per < 33 ? "red" : "green";
+      showResult(`Percentage: ${per.toFixed(2)}%<br>Grade: ${grade}`, color);
+    }
+
+    function resetForm() {
+      document.getElementById('a').value = '';
+      document.getElementById('b').value = '';
+      document.getElementById('c').value = '';
+      document.getElementById('d').value = '';
+      document.getElementById('e').value = '';
+      document.getElementById('resultBox').innerHTML = '';
+    }
+
+    function showResult(message, color) {
+      const box = document.getElementById("resultBox");
+      box.innerHTML = message;
+      box.style.color = color;
+    }
+  </script>
+
+</body>
+</html>

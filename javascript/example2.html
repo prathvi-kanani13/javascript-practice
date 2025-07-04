@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const arr = [ 
+            {name :'user1 ' , rollno : 1 , status : "good"},
+            {name :'user2 ' , rollno : 2 , status : "good"},
+            {name :'user3 ' , rollno : 3 , status : "good"},
+            {name :'user4 ' , rollno : 4 , status : "good"},
+            {name :'user5 ' , rollno : 5 , status : "good"},
+            {name :'user6 ' , rollno : 6 , status : "good"},
+        ]
+        const abc=arr.map(user=>{
+            if(user.rollno%2==0){
+                return{...user,status:"bad"}
+            }else{
+                return user;
+            }
+        })
+        console.log(abc)
+    </script>
+</body>
+</html>

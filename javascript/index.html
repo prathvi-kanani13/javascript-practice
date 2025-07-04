@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Manager</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f2f2f2;
+        padding: 30px;
+        margin: 0;
+      }
+
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .buttons {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      button {
+        margin: 5px;
+        padding: 12px 20px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      #output {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-left: 5px solid #007bff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        white-space: pre-wrap;
+        min-height: 100px;
+        font-family: monospace;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>User Manager App</h1>
+    <div class="buttons">
+      <button onclick="createUser()">Add User</button>
+      <button onclick="listUsers()">Show Users</button>
+      <button onclick="simulateLogout()">Logout (3s)</button>
+      <button onclick="addSampleUsers()">Add Sample Users</button>
+    </div>
+
+    <div id="output"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
